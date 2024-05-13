@@ -1,14 +1,14 @@
 /* echoserver.c*/
-//13-maio-2024 13h00 hor·rio de BrasÌlia. Este cÛdigo faz parte dos meus estudos sobre Redes de Computadores,
-//e È baseado nos exercÌcios propostos pelo professor Douglas E. Comer, do livro Redes de Computadores e Internet (6∫ ediÁ„o)
+//13-maio-2024 13h00 hor√°rio de Bras√≠lia. Este c√≥digo faz parte dos meus estudos sobre Redes de Computadores,
+//e √© baseado nos exerc√≠cios propostos pelo professor Douglas E. Comer, do livro Redes de Computadores e Internet (6¬∫ edi√ß√£o)
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <cnaiapi.h>
 
 #define BUFFSIZE  256
 // Programa: Echoserver
-//Objetivo: esperar pela conex„o do Client e ecoar dados
+//Objetivo: esperar pela conex√£o do Client e ecoar dados
 //Uso: echoserver <appnum>
 
 int
@@ -22,12 +22,12 @@ main(int argc, char *argv[])
             (void) fprintf(stderr, "usage: %s <appnum>\n", argv[0]);
              exit(1);
                   }
-                  //Espera pela conex„o do cliente
+                  //Espera pela conex√£o do cliente
 
                   conn = await_contact ((appnum) atoi(argv[1]));
                   if (conn < 0)
                       exit(1);
-//InteraÁ„o que ecoa  todos os dados recebidos atÈ o final do arquivo
+//Intera√ß√£o que ecoa  todos os dados recebidos at√© o final do arquivo
 while((len = recv(conn, buff, BUFFSIZE, 0)) > 0)
     (void) send(conn, buff, len, 0);
 send_eof(conn);
